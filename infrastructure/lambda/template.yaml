@@ -67,11 +67,11 @@ Globals:
     VpcConfig:
       SecurityGroupIds: !If
         - IsDevPlatformDeploy
-        - [ !ImportValue cri-vpc-AWSServicesEndpointSecurityGroupId ]
+        - !Ref AWS::NoValue
         - [ !ImportValue cri-vpc-LambdaSecurityGroup ]
       SubnetIds: !If
         - IsDevPlatformDeploy
-        - [ !ImportValue cri-vpc-PrivateSubnetIdA, !ImportValue cri-vpc-PrivateSubnetIdB, !ImportValue cri-vpc-PrivateSubnetIdC ]
+        - !Ref AWS::NoValue
         - !Split [ ",", !ImportValue cri-vpc-PrivateSubnets ]
     PermissionsBoundary: !If
       - UsePermissionsBoundary
